@@ -1,5 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
+declare const process: { env: Record<string, string | undefined> };
+
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -30,6 +32,9 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
+    
   },
 
   /* Configure projects for major browsers */
